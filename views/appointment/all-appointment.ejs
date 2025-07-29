@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>All appointments</h1>
+    <% AllAppointment.forEach(App => { %>
+     <h2>patientName: <%= App.patientName %> </h2>
+     <p>date: <%=App.date %></p>
+     <p>reason: <%= App.reason%></p>
+     <p>doctor: <%= App.doctor%></p>
+     <p>notes: <%= App.notes%></p>
+     <% }) %>
+</body>
+</html>
