@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment details</title>
+</head>
+<body>
+    <h1>Appointment details</h1>
+    <form action="/appointments/<%= foundAppointment._id%>" method="post">
+        <p>patient name: <%= foundAppointment.patientName%></p>
+        <p>date: <%= foundAppointment.date%></p>
+        <p>reason: <%= foundAppointment.reason%></p>
+        <%= foundAppointment.doctor.name%>
+        <hr>
+        <% foundAppointment.notes.forEach(note => { %>
+            <p><%= note.content %></p>
+        <% }) %> 
+    </form>
+
+    <form action="/appointments/<%= foundAppointment._id%>/note" method="post">
+        <label for="content">Add note: </label>
+        <textarea id="content" name="content" rows="4" cols="30"></textarea>
+        <button>ADD NOTE</button><hr />
+    </form>
+
+    <form action="/appointments/<%= foundAppointment._id%>/edit" method="get">
+        <button type="submit">UPDATE APPOINTMENT</button>
+    </form>
+    <form action="/appointments/<%= foundAppointment._id%>?_method=delete" method="post">
+        <button type="submit">DELETE APPOINTMENT</button>
+    </form>
+    <br />
+    <form action="/appointments" method="get">
+            <button type="submit">BACK</button>
+        </form>
+</body>
+</html>

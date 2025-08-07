@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add new Doctor</title>
 </head>
 <body>
-    <form action="/doctors" method="post">
-          <label for="name">name:</label>
-        <input id="name" name="name" type="text">
+    <h1>Add new doctor</h1>
+    <form action="/doctors/new" method="post">
+        <label for="name">Doctor name:</label>
+        <input name="name" id="name" type="text" required>
 
+         <label for="specialty">Doctor specialty:</label>
+        <input name="specialty" id="specialty" type="text" required>
 
-         <label for="specialty">specialty</label>
-        <input id="specialty" name="specialty" type="text">
+         <label for="yearsOfExperience">Years of experience:</label>
+        <input name="yearsOfExperience" id="yearsOfExperience" type="number" min="0" required>
 
-          <label for="yearsOfExperience">yearsOfExperience:</label>
-        <input name="yearsOfExperience" id="yearsOfExperience" type="number">
-
-        <button>Create A doctor</button>
+        <button type="submit">Add doctor</button>
     </form>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit appointment</title>
+</head>
+<body>
+    <h1>Edit appointment</h1>
+    <form action="/appointments/<%= foundAppointment._id%>?_method=PUT" method="post">
+        <label for="patientName">Patient name: </label>
+      <input type="text" name="patientName" id="patientName" value="<%=foundAppointment.patientName%>"/><hr>
+
+      <label for="date">date: </label>
+      <input type="date" name="date" id="date" value="<%= foundAppointment.date%>" /><hr>
+
+      <label for="reason">reason: </label>
+      <input type="text" name="reason" id="reason" value="<%= foundAppointment.reason%>"/><hr>
+
+      <button type="submit">UPDATE</button>
+    </form>
+    <br />
+    <form action="/appointments/<%= foundAppointment._id%>" method="get">
+        <button type="submit">BACK</button>
+    </form>
+</body>
+</html>

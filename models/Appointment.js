@@ -8,7 +8,7 @@ const notesSchema = new mongoose.Schema({
         default:now
     }
 
-})
+}, {timestamps : true})
 
 const appointmentSchema = new mongoose.Schema({
     patientName:{
@@ -26,8 +26,9 @@ const appointmentSchema = new mongoose.Schema({
         ref:"Doctor"
     },
     notes:[notesSchema]
-    
-
 
 
 })
+const Appointment = mongoose.model("Appointment",appointmentSchema)
+
+module.exports = Appointment 

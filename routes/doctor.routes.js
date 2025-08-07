@@ -1,34 +1,45 @@
-const mongoose = require("mongoose")
-const Doctor =require("../models/Doctor")
+const Doctor = require("../models/Doctor")
 const router = require("express").Router()
 
-router.get("/",async(req,res)=>{
+
+router.get("/", async (req, res) => {
     try {
-        const AllDoctors = await Doctor.find()  //populate
-        res.render("Doctors/all-doctors.ejs",{AllDoctors:AllDoctors})
-    } catch (error) {
-        console.log(error)
+        const doctors = await Doctor.find()
+        res.render("doctors/allDoctors.ejs", { doctors })
+    } catch (err) {
+        console.log(err)
     }
 })
-router.get("/new",async(req,res)=>{
+
+router.get("/new", (req, res) => {
     try {
-          
-        res.render("/new.ejs")
-    } catch (error) {
-        console.log(error)
+        res.render("doctors/new.ejs")
+    } catch (err) {
+        console.log("error occured", err)
     }
 })
-router.post("/",async (req,res)=>{
-    const createDoc = await Doctor.create(req.body)
-})
-outer.get("/:bookId",async(req,res)=>{
-    try{
-        const foundDoctor = await Doctor.findById(req.params.bookId)
-        
-        res.render("/doctor-details.ejs",{foundDoctor: foundDoctor})
-    }
-    catch(error){
-        console.log(error)
+
+
+router.post("/new", async (req, res) => {
+    try {
+        await Doctor.create(req.body)
+        res.redirect("/doctors")
+        console.log("doctor added successfully")
+    } catch (err) {
+        console.log("Can't add new doctor error occured: ", err)
     }
 })
+
+router.get("/:id", async(req, res)=>{
+    try {
+        const foundDoc = await Doctor.findById(req.params.id)
+        console.log(foundDoc)
+        res.render("doctors/details.ejs", {foundDoc})
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+
+
 module.exports = router
